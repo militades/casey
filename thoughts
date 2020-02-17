@@ -1,0 +1,41 @@
+CA simple Python CAsey
+
+uses curses, has a default folder in linux and an etc file where base config is pulled from.
+
+etc has things like
+where to seek CAs  /share/casey/<caname>/ca/.
+                                            .openssl.conf
+                                            .index.txt
+                                            .serial (has 1000 at top of file)
+                                            .crlnumber
+                                            ./certs
+                                            ./crl
+                                            ./newcerts
+                                            ./private   (mode 700)
+                                                    ./.rand
+directives for
+  ciphers default== sha256
+
+
+directives are dumped into a dictionary
+
+
+first module is for preparing the configuration file and the file structure
+
+second module is a collection of functions that execute the commands.
+
+third module is the curses front end
+
+def genKey(**kwargs):
+    cipher = aes256
+    name =  ca
+    numbits = 4096
+
+    execute the command
+    openssl genrsa -aes256 -out private/ca.key.pem
+
+    somehow let the input pass through
+
+    changemode on file "private/ca.key.pem" to 400
+
+def
